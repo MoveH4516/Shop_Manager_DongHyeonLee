@@ -73,6 +73,12 @@ public class CartDAO {
 				}
 			}
 		}
+		for (int i = 0; i < cList.size(); i++) {
+			if (uDAO.uList.get(log).id.equals(cList.get(i).userId)) {
+				cList.remove(i);
+				i--;
+			}
+		}
 		System.out.println("총 구매 금액 : " + money);
 		return money;
 	}
