@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import vo.User;
 
 public class UserDAO {
-	private ArrayList<vo.User> uList;
+	public ArrayList<vo.User> uList;
 	private Utils.InputManger u;
 	public UserDAO() {
 		uList = new ArrayList<vo.User>();
@@ -65,6 +65,13 @@ public class UserDAO {
 		}
 		System.out.println(uList.get(idx).id + " 로그인 완료");
 		return idx;
+	}
+	
+	public void printUser() {
+		System.out.println("아이디 \t비밀번호 \t닉네임");
+		for (int i = 0; i < uList.size(); i++) {
+			System.out.print(uList.get(i));
+		}
 	}
 	
 }

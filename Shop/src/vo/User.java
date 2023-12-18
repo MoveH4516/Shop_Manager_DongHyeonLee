@@ -10,4 +10,12 @@ public class User {
 		this.pw = pw;
 		this.name = name;
 	}
+
+	@Override
+	public String toString() {
+		return id + "\t" + pw + "\t" + name + "\n";
+	}
+	
+	
+	
 }
