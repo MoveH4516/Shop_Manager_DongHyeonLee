@@ -2,7 +2,9 @@ package Controller;
 
 public class ShopController {
 
-	
+	public void run() {
+		
+	}
 	// 	System.out.println("[1.가입] [2.탈퇴] [3.로그인] [4.로그아웃]" + "\n[100.관리자] [0.종료] ");  
 	
 	// 	System.out.println("[1.쇼핑] [2.장바구니목록] [0.뒤로가기]");
