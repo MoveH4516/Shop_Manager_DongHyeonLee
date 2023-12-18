@@ -66,7 +66,11 @@ public class CartDAO {
 		int money = 0;
 		for (int i = 0; i < cList.size(); i++) {
 			if (cList.get(i).userId.equals(uDAO.uList.get(log).id)) {
-				money += iDAO.iList.get(i).price;
+				for (int j = 0; j < iDAO.iList.size(); j++) {
+					if (iDAO.iList.get(j).name.equals(cList.get(i).itemName)) {
+						money += iDAO.iList.get(j).price;
+					}
+				}
 			}
 		}
 		System.out.println("총 구매 금액 : " + money);

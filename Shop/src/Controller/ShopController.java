@@ -1,6 +1,5 @@
 package Controller;
 
-
 public class ShopController {
 	
 	private Utils.InputManger u;
