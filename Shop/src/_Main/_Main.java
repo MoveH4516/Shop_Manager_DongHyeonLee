@@ -8,7 +8,5 @@ public class _Main {
 		
 		ShopController shop = new ShopController();
 		shop.run();
-		
 	}
-
 }

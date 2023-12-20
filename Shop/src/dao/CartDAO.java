@@ -18,9 +18,9 @@ public class CartDAO {
 	}
 	
 	public void printMyCart(UserDAO uDAO, int log) {
-		System.out.println(uDAO.uList.get(log).id + "의 장바구니");
+		System.out.println(uDAO.uList.get(log).getId() + "의 장바구니");
 		for (int i = 0; i < cList.size(); i++) {
-			if (uDAO.uList.get(log).id.equals(cList.get(i).userId)) {
+			if (uDAO.uList.get(log).getId().equals(cList.get(i).getUserId())) {
 				System.out.println(cList.get(i));
 			}
 		}
@@ -32,7 +32,7 @@ public class CartDAO {
 			System.out.println("일치하는 아이템이 없습니다.");
 			return;
 		}
-		cList.add(new vo.Cart(uDAO.uList.get(log).id, item));
+		cList.add(new vo.Cart(uDAO.uList.get(log).getId(), item));
 		System.out.println(cList.get(cList.size() - 1) + "추가 완료");
 	}
 	
@@ -40,7 +40,7 @@ public class CartDAO {
 		int num = u.getValInt("[1]전체삭제 [2]특정 상품 삭제 [3]최근 상품 삭제", 1, 3);
 		if (num == 1) {
 			for (int i = 0; i < cList.size(); i++) {
-				if (uDAO.uList.get(idx).id.equals(cList.get(i).userId)) {
+				if (uDAO.uList.get(idx).getId().equals(cList.get(i).getUserId())) {
 					cList.remove(i);
 					i--;
 				}
@@ -52,7 +52,7 @@ public class CartDAO {
 				return;
 			}
 			for (int i = 0; i < cList.size(); i++) {
-				if (item.equals(cList.get(i).itemName) && uDAO.uList.get(idx).id.equals(cList.get(i).userId)) {
+				if (item.equals(cList.get(i).getItemName()) && uDAO.uList.get(idx).getId().equals(cList.get(i).getUserId())) {
 					cList.remove(i);
 					i--;
 				}
@@ -65,16 +65,16 @@ public class CartDAO {
 	public int purchase(ItemDAO iDAO, UserDAO uDAO, int log) {
 		int money = 0;
 		for (int i = 0; i < cList.size(); i++) {
-			if (cList.get(i).userId.equals(uDAO.uList.get(log).id)) {
+			if (cList.get(i).getUserId().equals(uDAO.uList.get(log).getId())) {
 				for (int j = 0; j < iDAO.iList.size(); j++) {
-					if (iDAO.iList.get(j).name.equals(cList.get(i).itemName)) {
-						money += iDAO.iList.get(j).price;
+					if (iDAO.iList.get(j).getName().equals(cList.get(i).getItemName())) {
+						money += iDAO.iList.get(j).getPrice();
 					}
 				}
 			}
 		}
 		for (int i = 0; i < cList.size(); i++) {
-			if (uDAO.uList.get(log).id.equals(cList.get(i).userId)) {
+			if (uDAO.uList.get(log).getId().equals(cList.get(i).getUserId())) {
 				cList.remove(i);
 				i--;
 			}
@@ -86,7 +86,7 @@ public class CartDAO {
 	private int checkItem(ItemDAO iDAO, String item) {
 		int num = -1;
 		for (int i = 0; i < iDAO.iList.size(); i++) {
-			if (item.equals(iDAO.iList.get(i).name)) {
+			if (item.equals(iDAO.iList.get(i).getName())) {
 				num = i;
 				return num;
 			}

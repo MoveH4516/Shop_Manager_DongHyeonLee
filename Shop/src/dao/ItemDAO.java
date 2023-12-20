@@ -57,7 +57,7 @@ public class ItemDAO {
 			return;
 		}
 		for (int i = 0; i < iList.size(); i++) {
-			if (iList.get(i).category.equals(cate)) {
+			if (iList.get(i).getCategory().equals(cate)) {
 				iList.remove(i);
 				i--;
 			}
@@ -69,7 +69,7 @@ public class ItemDAO {
 	private int checkCategory(String category) {
 		int num = -1;
 		for (int i = 0; i < cateList.size(); i++) {
-			if (cateList.get(i).category.equals(category)) {
+			if (cateList.get(i).getCategory().equals(category)) {
 				num = i;
 				return num;
 			}
@@ -80,7 +80,7 @@ public class ItemDAO {
 	private int checkItem(String name) {
 		int num = -1;
 		for (int i = 0; i < iList.size(); i++) {
-			if (iList.get(i).name.equals(name)) {
+			if (iList.get(i).getName().equals(name)) {
 				num = i;
 				return num;
 			}

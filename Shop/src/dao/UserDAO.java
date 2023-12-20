@@ -31,7 +31,7 @@ public class UserDAO {
 			return;
 		}
 		for (int i = 0; i < cDAO.cList.size(); i++) {
-			if (uList.get(idx).id.equals(cDAO.cList.get(i).userId)) {
+			if (uList.get(idx).getId().equals(cDAO.cList.get(i).getUserId())) {
 				cDAO.cList.remove(i);
 				i--;
 			}
@@ -43,7 +43,7 @@ public class UserDAO {
 	private int checkid(String id) {
 		int num = -1;
 		for (int i = 0; i < uList.size(); i++) {
-			if (uList.get(i).id.equals(id)) {
+			if (uList.get(i).getId().equals(id)) {
 				num = i;
 				break;
 			}
@@ -59,11 +59,11 @@ public class UserDAO {
 			return -1;
 		}
 		String pw = u.getValStr("pw");
-		if (!pw.equals(uList.get(idx).pw)) {
+		if (!pw.equals(uList.get(idx).getPw())) {
 			System.out.println("비밀번호가 일치하지 않습니다.");
 			return -1;
 		}
-		System.out.println(uList.get(idx).id + " 로그인 완료");
+		System.out.println(uList.get(idx).getId() + " 로그인 완료");
 		return idx;
 	}
 	
