@@ -16,6 +16,24 @@ public class UserDAO {
 		u = new Utils.InputManger();
 	}
 	
+	public void loadData(String data) {
+		String[] temp = data.split("\n");
+		for (int i = 0; i < temp.length; i++) {
+			String[] temp2 = temp[i].split("/");
+			User u = new User(temp2[0], temp2[1], temp2[2]);
+			uList.add(u);
+		}
+	}
+	
+	public String saveData() {
+		if (uList.size() == 0) return "";
+		String data = "";
+		for (User u : uList) {
+			data += u.saveData();
+		}
+		return data;
+	}
+	
 	public void addUser() {
 		String id = u.getValStr("id");
 		if (checkid(id) != -1) {
@@ -78,5 +96,5 @@ public class UserDAO {
 			System.out.print(uList.get(i));
 		}
 	}
-	
+
 }

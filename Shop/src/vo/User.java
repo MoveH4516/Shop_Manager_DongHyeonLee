@@ -23,5 +23,7 @@ public class User {
 	public String toString() {
 		return id + "\t" + pw + "\t" + name + "\n";
 	}
-	
+	public String saveData() {
+		return "%s/%s/%s\n".formatted(id, pw, name);
+	}
 }

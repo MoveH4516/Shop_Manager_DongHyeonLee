@@ -1,6 +1,7 @@
 package dao;
 
 import java.util.ArrayList;
+import vo.Cart;
 
 public class CartDAO {
 	private ArrayList<vo.Cart> cList;
@@ -9,6 +10,24 @@ public class CartDAO {
 	public CartDAO() {
 		cList = new ArrayList<vo.Cart>();
 		u = new Utils.InputManger();
+	}
+	
+	public String saveData() {
+		if (cList.size() == 0) return "";
+		String data = "";
+		for (Cart c : cList) {
+			data += c.saveData();
+		}
+		return data;
+	}
+	
+	public void loadData(String data) {
+		String[] temp = data.split("\n");
+		for (int i = 0; i < temp.length; i++) {
+			String[] temp2 = temp[i].split("/");
+			Cart c = new Cart(temp2[0], temp2[1]);
+			cList.add(c);
+		}
 	}
 	
 	public ArrayList<vo.Cart> getCList() {

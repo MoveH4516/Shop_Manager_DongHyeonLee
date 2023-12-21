@@ -19,5 +19,7 @@ public class Cart {
 	public String getItemName() {
 		return itemName;
 	}
-	
+	public String saveData() {
+		return "%s/%s\n".formatted(userId, itemName);
+	}
 }

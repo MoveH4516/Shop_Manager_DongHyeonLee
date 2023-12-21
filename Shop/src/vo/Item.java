@@ -27,4 +27,7 @@ public class Item {
 		return category;
 	}
 	
+	public String saveData() {
+		return "%s/%d/%s\n".formatted(name, price, category);
+	}
 }

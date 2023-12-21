@@ -1,6 +1,7 @@
 package dao;
 
 import java.util.ArrayList;
+import vo.Item;
 
 public class ItemDAO {
 	private ArrayList<vo.Item> iList;
@@ -10,7 +11,25 @@ public class ItemDAO {
 	public ArrayList<vo.Item> getIList() {
 		return iList;
 	}
-
+	
+	public String saveData() {
+		if (iList.size() == 0) return "";
+		String data = "";
+		for (Item i : iList) {
+			data += i.saveData();
+		}
+		return data;
+	}
+	
+	public void loadData(String data) {
+		String[] temp = data.split("\n");
+		for (int i = 0; i < temp.length; i++) {
+			String[] temp2 = temp[i].split("/");
+			Item item = new Item(temp2[0], Integer.parseInt(temp2[1]), temp2[2]);
+			iList.add(item);
+		}
+	}
+	
 	public ItemDAO() {
 		iList = new ArrayList<vo.Item>();
 		u = new Utils.InputManger();

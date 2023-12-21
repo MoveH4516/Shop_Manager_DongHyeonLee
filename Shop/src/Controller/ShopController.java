@@ -3,16 +3,19 @@ package Controller;
 public class ShopController {
 	
 	private Utils.InputManger u;
+	private Utils.FileManager f;
 	private dao.UserDAO uDAO;
 	private dao.CartDAO cDAO;
 	private dao.ItemDAO iDAO;
 	private int log;
 	public ShopController() {
 		u = new Utils.InputManger();
+		f = new Utils.FileManager();
 		uDAO = new dao.UserDAO();
 		cDAO = new dao.CartDAO();
 		iDAO = new dao.ItemDAO();
 		log = -1;
+		f.loadFile(cDAO, iDAO, uDAO);
 	}
 	
 	private void admin() {
@@ -68,6 +71,7 @@ public class ShopController {
 			System.out.println("[1.가입] [2.탈퇴] [3.로그인] [4.로그아웃]" + "\n[5.관리자] [0.종료] ");
 			int sel = u.getValInt("메뉴선택", 0, 5);
 			if (sel == 0) {
+				f.saveFile(cDAO, iDAO, uDAO);
 				break;
 			} else if (sel == 1) {
 				uDAO.addUser();
