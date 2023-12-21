@@ -3,10 +3,14 @@ package dao;
 import java.util.ArrayList;
 
 public class ItemDAO {
-	ArrayList<vo.Item> iList;
-	ArrayList<vo.Item> cateList;
-	Utils.InputManger u;
+	private ArrayList<vo.Item> iList;
+	private ArrayList<vo.Item> cateList;
+	private Utils.InputManger u;
 	
+	public ArrayList<vo.Item> getIList() {
+		return iList;
+	}
+
 	public ItemDAO() {
 		iList = new ArrayList<vo.Item>();
 		u = new Utils.InputManger();

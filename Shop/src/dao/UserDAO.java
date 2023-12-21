@@ -4,8 +4,13 @@ import java.util.ArrayList;
 import vo.User;
 
 public class UserDAO {
-	public ArrayList<vo.User> uList;
+	private ArrayList<vo.User> uList;
 	private Utils.InputManger u;
+	
+	public ArrayList<vo.User> getUList() {
+		return uList;
+	}
+
 	public UserDAO() {
 		uList = new ArrayList<vo.User>();
 		u = new Utils.InputManger();
@@ -30,9 +35,9 @@ public class UserDAO {
 			System.out.println("일치하는 아이디가 없습니다.");
 			return;
 		}
-		for (int i = 0; i < cDAO.cList.size(); i++) {
-			if (uList.get(idx).getId().equals(cDAO.cList.get(i).getUserId())) {
-				cDAO.cList.remove(i);
+		for (int i = 0; i < cDAO.getCList().size(); i++) {
+			if (uList.get(idx).getId().equals(cDAO.getCList().get(i).getUserId())) {
+				cDAO.getCList().remove(i);
 				i--;
 			}
 		}
