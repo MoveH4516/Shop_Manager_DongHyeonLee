@@ -10,10 +10,6 @@ public class Item {
 		this.price = price;
 		this.category = category;
 	}
-	
-	public Item(String category) {
-		this.category = category;
-	}
 
 	public String getName() {
 		return name;

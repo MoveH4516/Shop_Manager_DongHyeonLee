@@ -5,7 +5,7 @@ import vo.Item;
 
 public class ItemDAO {
 	private ArrayList<vo.Item> iList;
-	private ArrayList<vo.Item> cateList;
+	private ArrayList<String> cateList;
 	private Utils.InputManger u;
 	
 	public ArrayList<vo.Item> getIList() {
@@ -27,13 +27,14 @@ public class ItemDAO {
 			String[] temp2 = temp[i].split("/");
 			Item item = new Item(temp2[0], Integer.parseInt(temp2[1]), temp2[2]);
 			iList.add(item);
+			cateList.add(temp2[2]);
 		}
 	}
 	
 	public ItemDAO() {
 		iList = new ArrayList<vo.Item>();
 		u = new Utils.InputManger();
-		cateList = new ArrayList<vo.Item>();
+		cateList = new ArrayList<String>();
 	}
 	
 	public void addItem() {
@@ -69,7 +70,7 @@ public class ItemDAO {
 			System.out.println("카테고리 중복");
 			return;
 		}
-		cateList.add(new vo.Item(cate));
+		cateList.add(cate);
 	}
 	
 	public void removeCategory() {
@@ -92,7 +93,7 @@ public class ItemDAO {
 	private int checkCategory(String category) {
 		int num = -1;
 		for (int i = 0; i < cateList.size(); i++) {
-			if (cateList.get(i).getCategory().equals(category)) {
+			if (cateList.get(i).equals(category)) {
 				num = i;
 				return num;
 			}
